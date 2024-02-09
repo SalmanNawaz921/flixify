@@ -6,20 +6,9 @@ import { useEffect } from "react";
 import { ExitToApp } from "@mui/icons-material";
 import { useGetListQuery } from "../../services/moviesApi";
 import { MovieList } from "..";
+import { Favorite, Watchlist } from "..";
 const Profile = () => {
   const { id } = useParams();
-  const { data: fvrtMovies, isFetching: fvrtFetching } = useGetListQuery({
-    listName: "favorite/movies",
-    accountId: id,
-    sessionId: localStorage.getItem("session_id"),
-    page: 1,
-  });
-  const { data: watchListMovies, isFetching: watchFetching } = useGetListQuery({
-    listName: "watchlist/movies",
-    accountId: id,
-    sessionId: localStorage.getItem("session_id"),
-    page: 1,
-  });
   const { user } = useSelector(userSelector);
   const logout = () => {
     localStorage.clear();
@@ -36,22 +25,8 @@ const Profile = () => {
         </Button>
       </Box>
       <Grid>
-        {!fvrtMovies?.results.length ? (
-          <Typography variant="h5">No Favourite Movies</Typography>
-        ) : (
-          <Box>
-            <Typography variant="h5"> Favourite Movies</Typography>
-            <MovieList movies={fvrtMovies?.results} />
-          </Box>
-        )}
-        {!watchListMovies?.results.length ? (
-          <Typography variant="h5">No Movies To Watch</Typography>
-        ) : (
-          <Box>
-            <Typography variant="h5"> Watchlist</Typography>
-            <MovieList movies={watchListMovies?.results} />
-          </Box>
-        )}
+        <Favorite id={id} />
+        <Watchlist id={id} />
       </Grid>
     </Box>
   );

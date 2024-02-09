@@ -5,7 +5,7 @@ const Movie = ({ movie, i }) => {
   const classes = useStyles();
   // console.log(movie, i);
   return (
-    <Grid item xs={12} sm={6} md={4} lag={3} xl={2} className={classes.movie}>
+    <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
       <Grow in key={i}>
         <div>
           <Link className={classes.link} to={`/movie/${movie.id}`}>
