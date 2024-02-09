@@ -65,6 +65,11 @@ export const moviesApi = createApi({
       query: ({ actorId }) =>
         `/person/${actorId}/movie_credits?api_key=${movieApiKey}`,
     }),
+    // GET User Specific Lists
+    getList: builder.query({
+      query: ({ listName, accountId, sessionId, page }) =>
+        `/account/${accountId}/${listName}?api_key=${movieApiKey}&session_id=${sessionId}&page=${page}`,
+    }),
   }),
 });
 
@@ -75,4 +80,5 @@ export const {
   useGetRecommendedMoviesQuery,
   useGetActorInfoQuery,
   useGetActorMoviesQuery,
+  useGetListQuery,
 } = moviesApi;

@@ -12,7 +12,7 @@ const App = () => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Routes>
-          {["/", "/category/:id", "/genre/:id", "?page=:id"].map(
+          {["/", "/category/:id", "/genre/:id", "?page=:id", "/approved"].map(
             (path, index) => (
               <Route exact path={path} element={<Movies />} key={index} />
             )
