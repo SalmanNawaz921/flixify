@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Box,
   CircularProgress,
   useMediaQuery,
   Typography,
   Button,
-  Grid,
 } from "@mui/material";
 import { ArrowCircleLeft, ArrowCircleRight } from "@mui/icons-material";
 import { useGetMoviesQuery } from "../../services/moviesApi";
 import { useSelector } from "react-redux";
 import { MovieList } from "..";
-import { selectGenreorCategory } from "../../features/currGenreorCategory";
 import { Link, useNavigate } from "react-router-dom";
 import FeatureCard from "../FeatureCard/FeatureCard";
-const Movies = ({ genreOrCategory }) => {
+import useStyles from "./styles";
+const Movies = () => {
+  const classes = useStyles();
   const lg = useMediaQuery((theme) => theme.breakpoints.only("lg"));
-  const noOfMovies = lg ? 16 : 18;
+  const noOfMovies = lg ? 16 : 17;
   const history = useNavigate();
   const [page, setPage] = useState(1);
   const { genreIdorCategoryName, searchQuery } = useSelector(
@@ -27,7 +27,6 @@ const Movies = ({ genreOrCategory }) => {
     page,
     searchQuery,
   });
-  // console.log(data);
   if (isFetching) {
     return (
       <Box display="flex" justifyContent="center">
@@ -51,10 +50,8 @@ const Movies = ({ genreOrCategory }) => {
     history(`?page=${newPage}`);
     setPage(newPage);
   };
-  console.log(data?.total_pages);
   return (
     <>
-      {console.log(data)};
       <FeatureCard featuredMovie={data?.results[0]} />
       <MovieList movies={data?.results} noOfMovies={noOfMovies} excludeFirst />
       <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
@@ -64,7 +61,10 @@ const Movies = ({ genreOrCategory }) => {
           to={`?page=${page - 1}`}
           onClick={() => (page - 1 === 0 ? setPage(page) : setPage(page - 1))}
         >
-          <ArrowCircleLeft fontSize="large" />
+          <ArrowCircleLeft
+            fontSize="large"
+            className={classes.paginationIcon}
+          />
         </Button>
         <Typography variant="h4">{page}</Typography>
         <Button
@@ -76,7 +76,10 @@ const Movies = ({ genreOrCategory }) => {
               : navigateToPage(page + 1)
           }
         >
-          <ArrowCircleRight fontSize="large" />
+          <ArrowCircleRight
+            fontSize="large"
+            className={classes.paginationIcon}
+          />
         </Button>
       </div>
     </>

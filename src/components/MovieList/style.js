@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
   movieContainer: {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     overflow: "auto",
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center",

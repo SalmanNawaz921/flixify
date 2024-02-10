@@ -16,7 +16,7 @@ const useAlan = () => {
   const history = useNavigate();
   useEffect(() => {
     alanBtn({
-      key: "ee78f3247a695a149501ea7aa19f71092e956eca572e1d8b807a3e2338fdd0dc/stage",
+      key: import.meta.env.VITE_ALAN_AI_KEY,
 
       onCommand: ({ command, mode, genres, genreOrCategory, query }) => {
         if (command === "chooseGenre") {

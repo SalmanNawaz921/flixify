@@ -18,9 +18,9 @@ const Search = () => {
   const location = useLocation();
   if (
     location.pathname !== "/" &&
-    location.pathname !== "/category/:id" &&
-    location.pathname !== "/genre/:id" &&
-    location.pathname !== "?page=:id"
+    !location.pathname.startsWith("/category/") &&
+    !location.pathname.startsWith("/genre/") &&
+    !location.search.startsWith("?page=")
   )
     return null;
   return (

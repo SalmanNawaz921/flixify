@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import blueLogo from "../../assets/blueLogo.png";
-import redLogo from "../../assets/redLogo.png";
+import blueLogo from "../../assets//images/blueLogo.png";
+import redLogo from "../../assets/images/redLogo.png";
 import genreIcons from "../../assets/genres";
 import {
   Divider,
@@ -12,14 +12,12 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useStyles from "./styles";
 import { useGetGenresQuery } from "../../services/moviesApi";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectGenreorCategory } from "../../features/currGenreorCategory";
-import { Movies } from "..";
 const categories = [
   { label: "Popular", value: "popular" },
   { label: "Top Rated", value: "top-rated" },

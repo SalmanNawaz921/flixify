@@ -37,4 +37,7 @@ export default makeStyles((theme) => ({
     textAlign: "center",
     // color: "red",
   },
+  ratingIcon: {
+    color: theme.palette.mode === "dark" ? "#c30702" : "#007fd2",
+  },
 }));

@@ -1,7 +1,9 @@
 import { Typography, Grid, Grow, Tooltip, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
+import { createTheme } from "@mui/material";
 const Movie = ({ movie, i }) => {
+  const theme = createTheme();
   const classes = useStyles();
   // console.log(movie, i);
   return (
@@ -30,6 +32,10 @@ const Movie = ({ movie, i }) => {
                   readOnly
                   value={movie.vote_average / 2}
                   precision={0.1}
+                  sx={{
+                    color: (theme) =>
+                      theme.palette.mode === "dark" ? "#c30702" : "#007fd2",
+                  }}
                 />
               </div>
             </Tooltip>

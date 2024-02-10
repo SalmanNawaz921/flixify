@@ -5,10 +5,11 @@ import { Actors, Movies, MovieInfo, Navbar, Profile } from ".";
 import useStyles from "./styles";
 import useAlan from "./Alan";
 import { useEffect, useRef } from "react";
+import { createTheme } from "@mui/system";
 
 const App = () => {
   const alanBtnContainer = useRef(null);
-
+  const theme = createTheme();
   // const navigate = useNavigate();
   useAlan();
 

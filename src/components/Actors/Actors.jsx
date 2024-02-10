@@ -1,11 +1,4 @@
-import {
-  Grid,
-  Box,
-  CircularProgress,
-  Typography,
-  Button,
-  ButtonGroup,
-} from "@mui/material";
+import { Grid, Box, CircularProgress, Typography, Button } from "@mui/material";
 import { ArrowBack, Theaters } from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -14,8 +7,10 @@ import {
 } from "../../services/moviesApi";
 import useStyles from "./styles";
 import { MovieList } from "..";
+import { createTheme } from "@mui/system";
 
 const Actors = () => {
+  const theme = createTheme();
   const { id } = useParams();
   const { data, isFetching, error } = useGetActorInfoQuery({ actorId: id });
   const {
@@ -88,6 +83,11 @@ const Actors = () => {
             href={`https://www.imdb.com/names/${data?.imdb_id}`}
             endIcon={<Theaters />}
             variant="contained"
+            sx={{
+              color: "white",
+              backgroundColor: (theme) =>
+                theme.palette.mode === "dark" ? "#c30702" : "#007fd2", // Text color
+            }}
           >
             IMDB
           </Button>
@@ -95,8 +95,12 @@ const Actors = () => {
             target="_blank"
             rel="noopener noreferrer"
             endIcon={<ArrowBack />}
-            sx={{ borderColor: "primary.main", textDecoration: "none" }}
             variant="contained"
+            sx={{
+              color: "white",
+              backgroundColor: (theme) =>
+                theme.palette.mode === "dark" ? "#c30702" : "#007fd2", // Text color
+            }}
           >
             <Typography
               component={Link}

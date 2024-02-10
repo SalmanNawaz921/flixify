@@ -41,7 +41,10 @@ export default makeStyles((theme) => ({
     },
   },
   genreImages: {
-    filter: theme.palette.mode === "dark" && "invert(1)",
+    filter:
+      theme.palette.mode === "dark"
+        ? "invert(12%) sepia(82%) saturate(3860%) hue-rotate(357deg) brightness(112%) contrast(117%)"
+        : "invert(31%) sepia(83%) saturate(2608%) hue-rotate(184deg) brightness(94%) contrast(102%)",
     marginRight: "10px",
     height: "30px",
   },
@@ -81,9 +84,23 @@ export default makeStyles((theme) => ({
       height: "90%",
     },
   },
-  title: {},
+  buttonGroup: {
+    "& .MuiButton-root": {
+      color: theme.palette.mode === "dark" ? "#c30702" : "#007fd2", // Text color
+      border:
+        theme.palette.mode === "dark"
+          ? "0.5px solid #c30702"
+          : "0.5px solid #007fd2",
+      "&:hover": {
+        backgroundColor: "#faf7f7",
+        border:
+          theme.palette.mode === "dark"
+            ? "1px solid #c30702"
+            : "1px solid #007fd2",
+      },
+    },
+  },
   tagline: {
     fontWeight: "lighter",
   },
-  overview: {},
 }));

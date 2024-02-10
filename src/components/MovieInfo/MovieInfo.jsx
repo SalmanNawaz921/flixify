@@ -8,6 +8,7 @@ import {
   CircularProgress,
   useMediaQuery,
   Rating,
+  createTheme,
 } from "@mui/material";
 import {
   Movie as MovieIcon,
@@ -33,6 +34,7 @@ import { useEffect, useState } from "react";
 import { userSelector } from "../../features/auth";
 
 const MovieInfo = () => {
+  const theme = createTheme();
   const { user } = useSelector(userSelector);
   const classes = useStyles();
   const { id } = useParams();
@@ -150,7 +152,16 @@ const MovieInfo = () => {
 
         <Grid className={classes.containerSpaceAround} item>
           <Box display="flex" align="center">
-            <Rating readOnly value={data?.vote_average / 2} precision={0.1} />
+            <Rating
+              readOnly
+              value={data?.vote_average / 2}
+              precision={0.1}
+              sx={{
+                color: (theme) =>
+                  theme.palette.mode === "dark" ? "#c30702" : "#007fd2",
+              }}
+            />
+
             <Typography
               variant="subtitle1"
               gutterBottom
@@ -240,7 +251,11 @@ const MovieInfo = () => {
         <Grid item container>
           <div className={classes.buttonsContainer}>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size="small" variant="outlined">
+              <ButtonGroup
+                size="large"
+                variant="outlined"
+                className={classes.buttonGroup}
+              >
                 <Button
                   target="_blank"
                   rel="noopener noreferrer"
@@ -267,7 +282,11 @@ const MovieInfo = () => {
               </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size="small" variant="outlined">
+              <ButtonGroup
+                size="large"
+                variant="outlined"
+                className={classes.buttonGroup}
+              >
                 <Button
                   // href={data?.homepage}
                   endIcon={
@@ -328,7 +347,7 @@ const MovieInfo = () => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        {data?.videos?.results?.length > 0 && (
+        {data?.videos?.results?.length > 0 ? (
           <iframe
             autoPlay
             src={`https://www.youtube.com/embed/${data?.videos?.results[0].key}`}
@@ -337,6 +356,8 @@ const MovieInfo = () => {
             className={classes.video}
             allow="autoplay"
           />
+        ) : (
+          <div>No video available</div> // Placeholder or default content
         )}
       </Modal>
     </Grid>
