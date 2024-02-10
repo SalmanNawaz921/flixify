@@ -39,6 +39,7 @@ const MovieInfo = () => {
   const classes = useStyles();
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
+  console.log(data);
   const dispatch = useDispatch();
   const [isMovieFavourited, setIsMovieFavourited] = useState(false);
   const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
@@ -171,8 +172,10 @@ const MovieInfo = () => {
             </Typography>
           </Box>
           <Typography variant="h6" align="center" gutterBottom>
-            {data?.runtime} min | Language:
-            {data?.spoken_languages[0].name}
+            {data?.runtime} min
+            {data?.spoken_languages[0]?.name
+              ? ` | Language: data?.spoken_languages[0]?.name`
+              : " "}
           </Typography>
         </Grid>
         <Grid item className={classes.genresContainer}>
