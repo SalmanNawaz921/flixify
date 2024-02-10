@@ -174,7 +174,7 @@ const MovieInfo = () => {
           <Typography variant="h6" align="center" gutterBottom>
             {data?.runtime} min
             {data?.spoken_languages[0]?.name
-              ? ` | Language: data?.spoken_languages[0]?.name`
+              ? ` | Language: ${data?.spoken_languages[0]?.name}`
               : " "}
           </Typography>
         </Grid>
