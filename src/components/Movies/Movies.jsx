@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { MovieList } from "..";
 import { selectGenreorCategory } from "../../features/currGenreorCategory";
 import { Link, useNavigate } from "react-router-dom";
+import FeatureCard from "../FeatureCard/FeatureCard";
 const Movies = ({ genreOrCategory }) => {
   const lg = useMediaQuery((theme) => theme.breakpoints.only("lg"));
   const noOfMovies = lg ? 16 : 18;
@@ -53,7 +54,9 @@ const Movies = ({ genreOrCategory }) => {
   console.log(data?.total_pages);
   return (
     <>
-      <MovieList movies={data?.results} noOfMovies={noOfMovies} />
+      {console.log(data)};
+      <FeatureCard featuredMovie={data?.results[0]} />
+      <MovieList movies={data?.results} noOfMovies={noOfMovies} excludeFirst />
       <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
         {" "}
         <Button

@@ -34,7 +34,9 @@ const Sidebar = ({ setMobileOpen }) => {
   const classes = useStyles();
   const { data, error, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
-  // console.log(genreIdorCategoryName);
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [genreIdorCategoryName]);
   return (
     <>
       <Link to="/" className={classes.imageLink}>

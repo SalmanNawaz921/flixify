@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   AppBar,
   IconButton,
@@ -15,7 +15,7 @@ import {
   Brightness4,
   Brightness7,
 } from "@mui/icons-material";
-
+import { ToggleModeContext } from "../../utils/ToggleMode";
 import { useTheme } from "@mui/material/styles";
 import { Link, Routes } from "react-router-dom";
 import useStyles from "./styles";
@@ -30,6 +30,7 @@ const Navbar = () => {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const dispatch = useDispatch();
+  const colorMode = useContext(ToggleModeContext);
   const token = localStorage.getItem("request_token");
   const session_id_storage = localStorage.getItem("session_id");
   useEffect(() => {
@@ -67,7 +68,11 @@ const Navbar = () => {
               <Menu />
             </IconButton>
           )}
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+          <IconButton
+            color="inherit"
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleMode}
+          >
             {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
           {!isMobile && <Search />}
@@ -88,7 +93,7 @@ const Navbar = () => {
                 <Avatar
                   style={{ width: "30", height: "30" }}
                   alt="profile"
-                  src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                  src={`https://www.themoviedb.prg/t/p/w-64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`}
                 ></Avatar>
               </Button>
             )}

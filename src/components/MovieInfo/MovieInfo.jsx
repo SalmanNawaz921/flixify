@@ -38,9 +38,6 @@ const MovieInfo = () => {
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
   const dispatch = useDispatch();
-  // console.log(data);
-  // const isMovieFavourited = false;
-  // const isMovieWatchlisted = false;
   const [isMovieFavourited, setIsMovieFavourited] = useState(false);
   const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
   const [open, setOpen] = useState(false);
@@ -120,7 +117,12 @@ const MovieInfo = () => {
         item
         sm={12}
         lg={4}
-        style={{ display: "flex", marginBottom: "40px" }}
+        className={classes.posterContainer}
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          marginBottom: "30px",
+        }}
       >
         <img
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
