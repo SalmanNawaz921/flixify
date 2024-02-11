@@ -41,7 +41,7 @@ To set up the project locally, follow these steps:
 - Create a `.env` file in the root directory.
 - Add the following environment variable:
   ```
-  REACT_APP_TMDB_API_KEY=your-tmdb-api-key
+  VITE_TMDB_API_KEY=your-tmdb-api-key
   ```
 
 ### Alan AI
@@ -52,7 +52,7 @@ To set up the project locally, follow these steps:
 6. Set up environment variables:
 - Add the following environment variable to the `.env` file:
   ```
-  REACT_APP_ALAN_AI_KEY=your-alan-ai-key
+  VITE_ALAN_AI_KEY=your-alan-ai-key
   ```
 
 7. Install dependencies:
